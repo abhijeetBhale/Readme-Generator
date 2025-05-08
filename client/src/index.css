@@ -7,11 +7,10 @@
 
 /* Global Body Styling */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f7fafc; /* Light gray background */
+  font-family: "Share Tech Mono", monospace;  background-color: #f7fafc; /* Light gray background */
   color: #2d3748; /* Dark text color */
   margin: 0;
-  padding: 0;
+  padding: 0px 50px;
   line-height: 1.5;
 }
 
@@ -252,4 +251,16 @@ footer p {
   #section1 {
     padding: 15px;
   }
+}
+
+#work input{  
+  margin-left: 30px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid black;
+  font-size: 13px;
+}
+
+#work,#learning,#contact{
+  padding: 30px;
 }

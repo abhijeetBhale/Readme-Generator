@@ -13,8 +13,10 @@
     "@tailwindcss/postcss": "^4.1.5",
     "axios": "^1.9.0",
     "clipboard.js": "^1.0.1",
+    "devicon": "^2.16.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0"
   },
   "devDependencies": {
