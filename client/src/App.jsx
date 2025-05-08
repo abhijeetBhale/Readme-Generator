@@ -1,58 +1,226 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
+  const [userData, setUserData] = useState({
+    name: '',
+    username: '',
+    bio: '',
+    project1: '',
+    project1Link: '',
+    project2: '',
+    project2Link: '',
+    helpWith: '',
+    helpWithLink: '',
+    learning: '',
+    askAbout: '',
+    email: '',
+    portfolioLink: '',
+    blogLink: '',
+    resumeLink: '',
+    funFact: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const generateReadme = () => {
+    return `# Hi 👋, I'm ${userData.name}
+
+## A passionate Full Stack Developer
+
+### Work
+
+🚀 **I’m currently working on**  
+[${userData.project1}](${userData.project1Link})
+
+🤝 **I’m looking to collaborate on**  
+[${userData.project2}](${userData.project2Link})
+
+💡 **I’m looking for help with**  
+[${userData.helpWith}](${userData.helpWithLink})
+
+🌱 **I’m currently learning**  
+${userData.learning}
+
+💬 **Ask me about**  
+${userData.askAbout}
+
+📫 **How to reach me**  
+[${userData.email}](mailto:${userData.email})
+
+---
+
+### Other Links
+
+🖥️ **All of my projects are available at**  
+[Portfolio](${userData.portfolioLink})
+
+📝 **I regularly write articles on**  
+[Blog](${userData.blogLink})
+
+📄 **Know about my experiences**  
+[Resume](${userData.resumeLink})
+
+⚡ **Fun fact**  
+${userData.funFact}
+    `;
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(generateReadme())
+      .then(() => alert('Copied to Clipboard!'))
+      .catch((err) => alert('Failed to copy: ', err));
+  };
+
+  const downloadReadme = () => {
+    const blob = new Blob([generateReadme()], { type: 'text/markdown' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${userData.name}-README.md`;
+    link.click();
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 p-4">
-      <header className="text-center mb-6">
-        <h1 className="text-4xl font-bold mb-2">GitHub README Generator</h1>
-        <p className="text-lg text-gray-600">Build your GitHub profile README with ease</p>
+    <div className="App">
+      <header className="text-center p-4 bg-gray-800 text-white">
+        <h1 className="text-3xl font-bold">GitHub README Generator</h1>
+        <p className="mt-2">Generate a custom README file for your GitHub profile.</p>
       </header>
 
-      <main className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <section className="mb-6">
-          <h2 className="text-2xl font-semibold mb-4">👤 Profile Details</h2>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              placeholder="GitHub Username"
-              className="border border-gray-300 p-2 rounded"
-            />
-            <input
-              type="text"
-              placeholder="Bio or Tagline"
-              className="border border-gray-300 p-2 rounded"
-            />
-            <input
-              type="text"
-              placeholder="Skills (comma separated)"
-              className="col-span-1 md:col-span-2 border border-gray-300 p-2 rounded"
-            />
-            <textarea
-              placeholder="About Me / Description"
-              className="col-span-1 md:col-span-2 border border-gray-300 p-2 rounded"
-              rows={4}
-            />
-          </form>
-        </section>
-
-        <section className="mb-6">
-          <h2 className="text-2xl font-semibold mb-4">📄 Live Preview</h2>
-          <div className="border border-gray-300 p-4 bg-gray-50 rounded text-sm font-mono whitespace-pre-wrap">
-            <p>👤 GitHub Username: [username]</p>
-            <p>📝 Bio: [bio]</p>
-            <p>🛠 Skills: [skills]</p>
-            <p>📘 About Me:</p>
-            <p>[about me]</p>
+      <main className="p-6">
+        <div className="space-y-4">
+          {/* Work Section */}
+          <div className="section">
+            <h2 className="text-xl font-bold mb-2">Work</h2>
+            <div className="flex flex-col space-y-2">
+              <div className="flex items-center space-x-4">
+                <p className="text-gray-600">🚀 I’m currently working on</p>
+                <input
+                  type="text"
+                  name="project1"
+                  placeholder="Project 1 Name"
+                  value={userData.project1}
+                  onChange={handleInputChange}
+                  className="p-3 border border-gray-300 rounded-md"
+                />
+                <input
+                  type="text"
+                  name="project1Link"
+                  placeholder="Project 1 Link"
+                  value={userData.project1Link}
+                  onChange={handleInputChange}
+                  className="p-3 border border-gray-300 rounded-md"
+                />
+              </div>
+              <div className="flex items-center space-x-4">
+                <p className="text-gray-600">🤝 I’m looking to collaborate on</p>
+                <input
+                  type="text"
+                  name="project2"
+                  placeholder="Project 2 Name"
+                  value={userData.project2}
+                  onChange={handleInputChange}
+                  className="p-3 border border-gray-300 rounded-md"
+                />
+                <input
+                  type="text"
+                  name="project2Link"
+                  placeholder="Project 2 Link"
+                  value={userData.project2Link}
+                  onChange={handleInputChange}
+                  className="p-3 border border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
           </div>
-        </section>
 
-        <div className="flex justify-end gap-4">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Copy Markdown
-          </button>
-          <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-            Download .md
-          </button>
+          {/* Learning & Skills Section */}
+          <div className="section">
+            <h2 className="text-xl font-bold mb-2">Learning & Skills</h2>
+            <input
+              type="text"
+              name="learning"
+              placeholder="Currently Learning"
+              value={userData.learning}
+              onChange={handleInputChange}
+              className="p-3 border border-gray-300 rounded-md"
+            />
+            <input
+              type="text"
+              name="askAbout"
+              placeholder="Ask Me About"
+              value={userData.askAbout}
+              onChange={handleInputChange}
+              className="p-3 border border-gray-300 rounded-md"
+            />
+          </div>
+
+          {/* Contact Section */}
+          <div className="section">
+            <h2 className="text-xl font-bold mb-2">Contact</h2>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={userData.email}
+              onChange={handleInputChange}
+              className="p-3 border border-gray-300 rounded-md"
+            />
+            <input
+              type="text"
+              name="portfolioLink"
+              placeholder="Portfolio Link"
+              value={userData.portfolioLink}
+              onChange={handleInputChange}
+              className="p-3 border border-gray-300 rounded-md"
+            />
+            <input
+              type="text"
+              name="blogLink"
+              placeholder="Blog Link"
+              value={userData.blogLink}
+              onChange={handleInputChange}
+              className="p-3 border border-gray-300 rounded-md"
+            />
+            <input
+              type="text"
+              name="resumeLink"
+              placeholder="Resume Link"
+              value={userData.resumeLink}
+              onChange={handleInputChange}
+              className="p-3 border border-gray-300 rounded-md"
+            />
+            <input
+              type="text"
+              name="funFact"
+              placeholder="Fun Fact"
+              value={userData.funFact}
+              onChange={handleInputChange}
+              className="p-3 border border-gray-300 rounded-md"
+            />
+          </div>
+
+          <div className="mt-4 flex space-x-4">
+            <button
+              type="button"
+              className="bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700"
+              onClick={copyToClipboard}
+            >
+              Copy to Clipboard
+            </button>
+            <button
+              type="button"
+              className="bg-green-600 text-white p-3 rounded-md hover:bg-green-700"
+              onClick={downloadReadme}
+            >
+              Download README
+            </button>
+          </div>
         </div>
       </main>
     </div>

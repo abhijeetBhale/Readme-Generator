@@ -1,3 +1,255 @@
+/* Tailwind's base styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom Global Styles */
+
+/* Global Body Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7fafc; /* Light gray background */
+  color: #2d3748; /* Dark text color */
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+/* Container for the whole page */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Header Styles */
+header {
+  text-align: center;
+  background-color: #edf2f7;
+  padding: 2rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #718096;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  color: #2d3748;
+  resize: none;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #3182ce;
+  outline: none;
+}
+
+/* Section for Preview */
+.preview-container {
+  background-color: #edf2f7;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  min-height: 200px;
+  color: #2d3748;
+  overflow: auto;
+}
+
+.preview-container pre {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #4a5568;
+}
+
+/* Button Styles */
+button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button.bg-blue-600 {
+  background-color: #3182ce;
+  color: white;
+}
+
+button.bg-blue-600:hover {
+  background-color: #2b6cb0;
+  transform: translateY(-2px);
+}
+
+button.bg-green-600 {
+  background-color: #38a169;
+  color: white;
+}
+
+button.bg-green-600:hover {
+  background-color: #2f855a;
+  transform: translateY(-2px);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Section for GitHub API or user details */
+.github-details {
+  background-color: #edf2f7;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.github-details h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.github-details p {
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+.github-details img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #edf2f7;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+}
+
+footer p {
+  color: #718096;
+  font-size: 1rem;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 1024px) {
+  /* Header */
+  header {
+    padding: 1.5rem;
+  }
+
+  /* Form */
+  form {
+    padding: 1.5rem;
+  }
+
+  /* Preview Container */
+  .preview-container {
+    margin-top: 1.5rem;
+  }
+
+  /* Buttons */
+  button {
+    font-size: 0.95rem;
+    padding: 0.9rem 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Header */
+  header {
+    padding: 1rem;
+  }
+
+  /* Main Container */
+  .container {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  /* Form */
+  form {
+    padding: 1.5rem;
+  }
+
+  /* Preview Section */
+  .preview-container {
+    margin-top: 1.5rem;
+  }
+
+  /* Buttons */
+  button {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  /* Section Padding */
+  #section1 {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Header */
+  header h1 {
+    font-size: 2rem;
+  }
+
+  /* Form */
+  form {
+    padding: 1.25rem;
+  }
+
+  /* Preview Container */
+  .preview-container {
+    padding: 1rem;
+  }
+
+  /* Buttons */
+  button {
+    font-size: 0.85rem;
+    padding: 0.7rem 1.4rem;
+  }
+
+  /* Section Padding */
+  #section1 {
+    padding: 15px;
+  }
+}
